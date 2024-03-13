@@ -1,0 +1,20 @@
+# length(m) time(s)  process
+1.e-10 1.e-14 CovBondVib
+5.e-9  3.0e-6 foldingSmallProteins
+1.e-9  0.5e-11  CCCCgauche-transIsomerization 
+1.e-8  1.e1  rubiscoTurnover
+1.e-7  1.e-1  actinStep
+1.e-6  1.e3   ecolidouble
+1.e-13 1.e17  uranium238NucHalfLife
+2.0e-2 4e8    pitchDrop
+2.0    3000   myheightthistalk
+1.e2   1.e9   redwood
+3.7e17 1.e5   kesselRun
+1.e20  1.e16  galacticyearsundistance
+# some velocities of interest in m/s
+# 1.5  cockroach
+# 12   usain bolt
+# 100  NASCAR
+# 1000 Ar15 muzzle velocity
+# 18000 Atlas-V
+# 3.e9 light

@@ -1,0 +1,95 @@
+defaults:
+  figure:
+    size: [9,6]
+  points:
+    horizontalalignment: left
+    verticalalignment: center
+    offset: e
+    offset_fac: 3
+  velocities:
+    rotation: 45
+    x: 1.0e+9
+    shortcode: 'k--'
+    alpha: 0.5
+    offset_fac: 6
+points:
+  - name: Kessel run
+    length: 3.e+17
+    time: 1.e+5
+  - name: Covalent bond vibration
+    length: 1.e-10
+    time: 1.e-14
+  - name: Fast protein folding
+    length: 5.e-9
+    time: 3.e-6
+  - name: Trans-gauche C-C isomerization
+    length: 1.e-9
+    time: 0.5e-11
+  - name: Rubisco turnover
+    length: 1.e-8
+    time: 1.e+1
+  - name: Actin power stroke
+    length: 1.e-7
+    time: 1.e-1
+    offset: se
+  - name: E. coli doubling
+    length: 1.e-6
+    time: 1.e+3
+    horizontalalignment: right
+    offset: nw
+  - name: U-238 halflife
+    length: 1.e-13
+    time: 1.e+17
+  - name: Pitch drop
+    length: 2.e-2
+    time: 4.e+8
+    horizontalalignment: right
+    offset: sw
+  - name: "PHL->COR"
+    length: 6.e+6
+    time: 67140
+    offset: nw
+    horizontalalignment: right
+  - name: "Speaker height : talk duration"
+    length: 2.0
+    time: 3000
+    offset: se
+  - name: Redwood
+    length: 1.e+2
+    time: 1.e+9
+    offset: nw
+    horizontalalignment: right
+    verticalalignment: bottom
+    offset_fac: 2.0
+  - name: Earth's GY
+    length: 1.e+20
+    time: 1.e+16
+    offset: nw
+    horizontalalignment: right
+velocities:
+  - name: Bacterium
+    value: 1.e-5
+  - name: Centipede
+    value: 0.3
+    include: false
+  - name: Earthworm
+    value: 0.2e-2
+  - name: Cockroach
+    value: 1
+    comment: "50 body lengths per second; body length 2 cm: 50*0.02=1"
+  - name: Usain Bolt
+    value: 12
+    include: false
+  - name: NASCAR
+    value: 100
+  - name: Bullet
+    value: 1700
+    include: false
+  - name: Escape velocity (Earth)
+    value: 11186
+  - name: Light
+    value: 3.e+9
+    shortcode: 'r-'
+    alpha: 1.0
+  - name: Solar wind
+    value: 500.e+3
