@@ -16,8 +16,8 @@ points:
   - name: Kessel run
     length: 3.e+17
     time: 1.e+5
-    image: mf.jpeg
-    image_zoom: 0.015
+    image: mf.png
+    image_zoom: 0.05
   - name: Covalent bond vibration
     length: 1.e-10
     time: 1.e-14
