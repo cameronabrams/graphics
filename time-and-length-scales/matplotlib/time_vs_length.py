@@ -20,7 +20,7 @@ def imscatter(x, y, image, ax=None, zoom=1):
         ab = AnnotationBbox(im, (x0, y0), xycoords='data', frameon=False)
         artists.append(ax.add_artist(ab))
     ax.update_datalim(np.column_stack([x, y]))
-    ax.autoscale()
+    # ax.autoscale()
     return artists
 
 def get_text_loc(x,y,o,fac=2):
@@ -67,7 +67,8 @@ for point in data['points']:
     print(x,y,l,o)
     xt,yt=get_text_loc(x,y,o,fac=point.get('offset_fac',data['defaults']['points']['offset_fac']))
     if point.get('image',None)!=None:
-        imscatter(x,y,point['image'],ax,zoom=0.1)
+        zoom=point.get('image_zoom',1.0)
+        imscatter(x,y,point['image'],ax,zoom=zoom)
     else:
         ax.plot(x,y,marker='o',color='#07294D')
     t=ax.text(xt,yt,l,fontsize=12,horizontalalignment=point.get('horizontalalignment',data['defaults']['points']['horizontalalignment']),verticalalignment=point.get('verticalalignment',data['defaults']['points']['verticalalignment']))
