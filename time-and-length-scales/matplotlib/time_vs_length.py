@@ -1,8 +1,27 @@
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
+from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 import numpy as np
 # import pandas as pd
 import yaml
+
+def imscatter(x, y, image, ax=None, zoom=1):
+    if ax is None:
+        ax = plt.gca()
+    try:
+        image = plt.imread(image)
+    except TypeError:
+        # Likely already an array...
+        pass
+    im = OffsetImage(image, zoom=zoom)
+    x, y = np.atleast_1d(x, y)
+    artists = []
+    for x0, y0 in zip(x, y):
+        ab = AnnotationBbox(im, (x0, y0), xycoords='data', frameon=False)
+        artists.append(ax.add_artist(ab))
+    ax.update_datalim(np.column_stack([x, y]))
+    ax.autoscale()
+    return artists
 
 def get_text_loc(x,y,o,fac=2):
     xf=1.0
@@ -47,7 +66,10 @@ for point in data['points']:
     o=point.get('offset',data['defaults']['points']['offset'])
     print(x,y,l,o)
     xt,yt=get_text_loc(x,y,o,fac=point.get('offset_fac',data['defaults']['points']['offset_fac']))
-    ax.plot(x,y,marker='o',color='#07294D')
+    if point.get('image',None)!=None:
+        imscatter(x,y,point['image'],ax,zoom=0.1)
+    else:
+        ax.plot(x,y,marker='o',color='#07294D')
     t=ax.text(xt,yt,l,fontsize=12,horizontalalignment=point.get('horizontalalignment',data['defaults']['points']['horizontalalignment']),verticalalignment=point.get('verticalalignment',data['defaults']['points']['verticalalignment']))
     t.set_bbox(dict(boxstyle='round,pad=0.1',facecolor='#FFC903', alpha=0.5, linewidth=0))
 
@@ -60,4 +82,4 @@ for v in data['velocities']:
         xt=v.get('x',d['x'])
         yt=xt/float(v['value'])*v.get('offset_fac',d['offset_fac'])
         ax.text(xt,yt,v['name'],rotation=v.get('rotation',rotation))
-fig.savefig('time-vs-length.png',bbox_inches='tight')
+fig.savefig('time-vs-length.png',bbox_inches='tight',dpi=200)
